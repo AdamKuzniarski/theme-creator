@@ -1,4 +1,4 @@
-export const themes = [
+const themes = [
   {
     id: "0",
     name: "Vivid Meadow",
@@ -78,3 +78,4 @@ export const themes = [
     ],
   },
 ];
+export default themes;
