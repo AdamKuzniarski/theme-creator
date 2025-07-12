@@ -11,7 +11,8 @@ function App() {
   const [themes, setThemes] = useState(initialThemes);
 
   function handleAddTheme(newTheme) {
-    setThemes([...themes, newTheme]);
+    setThemes([newTheme, ...themes]);
+    console.log(newTheme);
   }
 
   return (
