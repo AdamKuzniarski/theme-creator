@@ -7,15 +7,16 @@ export default function Theme({ theme }) {
   //lokaler State für zusammenklappen!
   const [open, setOpen] = useState(true);
 
-//funktion die dreht die State open und !open => wenn open dreh den State um
-function handleToogle() {
-  setOpen((open) => !open);
-}
+  //funktion die dreht die State open und !open => wenn open dreh den State um
+  function handleToogle() {
+    setOpen((open) => !open);
+  }
 
-return (
+  return (
     <section className="theme-section">
       <div
         className="theme-collapsed"
+        // add hendler function to DIV element
         onClick={handleToogle}
         style={{ cursor: "pointer" }}
       >
@@ -30,19 +31,13 @@ return (
             />
           ))}
         </div>
-        <span className="theme-arrow">
-          {open ? "▼" : "▲"}
-        </span>
+        <span className="theme-arrow">{open ? "▼" : "▲"}</span>
       </div>
 
       {open && (
         <div className="theme-detail">
           {theme.colors.map((color) => (
-            <ColorCard
-              key={color.role}
-              role={color.role}
-              hex={color.value}
-            />
+            <ColorCard key={color.role} role={color.role} hex={color.value} />
           ))}
         </div>
       )}
