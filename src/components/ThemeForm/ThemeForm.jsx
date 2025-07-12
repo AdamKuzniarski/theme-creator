@@ -48,6 +48,25 @@ export default function ThemeForm({ onAddTheme }) {
           />
         </label>
       </div>
+      <div className="theme-form-row">
+        <label>
+          Secondary:
+          <input
+            type="color"
+            value={secondary}
+            onChange={(event) => setSecondary(event.target.value)}
+            required
+          />
+          <input
+            type="text"
+            value={secondary}
+            onChange={(event) => setSecondary(event.target.value)}
+            maxLength={7}
+            pattern="#[0-9A-Fa-f]{6}"
+            required
+          />
+        </label>
+      </div>
     </form>
   );
 }

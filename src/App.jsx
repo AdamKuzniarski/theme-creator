@@ -1,19 +1,24 @@
 import "./App.css";
-import ColorCard from "./components/ColorCard.jsx";
+import themes from "./db.js";
 import Header from "./Header/Header.jsx";
 import Theme from "./components/Theme/Theme.jsx";
-import themes from "./db.js";
+import ThemeForm from "./components/ThemeForm/ThemeForm.jsx";
+import { useState } from "react";
 
+const initialThemes = themes;
 
 function App() {
- 
+  const [themes, setThemes] = useState(initialThemes);
 
-  /*  function handleToggle(themeName) {
-    setOpenTheme(openTheme === themeName ? null : themeName);
-  } */
+  function handleAddTheme(newTheme) {
+    setThemes([...themes, newTheme]);
+  }
+
   return (
     <>
       <Header />
+      {/* die function wird hier von ThemeForm übergeben und ausgelöst  */}
+      <ThemeForm onAddTheme={handleAddTheme} />
       {themes.map((theme) => (
         <Theme key={theme.name} theme={theme} />
       ))}
