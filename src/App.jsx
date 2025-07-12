@@ -1,22 +1,24 @@
 import "./App.css";
 import ColorCard from "./components/ColorCard.jsx";
 import Header from "./Header/Header.jsx";
-
+import Theme from "./components/Theme/Theme.jsx";
 import themes from "./db.js";
-import { useState } from "react";
 
 
 function App() {
-  const [openTheme, setOpenTheme] = useState(null);
+ 
 
-  function handleToggle(themeName) {
+  /*  function handleToggle(themeName) {
     setOpenTheme(openTheme === themeName ? null : themeName);
-  }
+  } */
   return (
     <>
       <Header />
-
       {themes.map((theme) => (
+        <Theme key={theme.name} theme={theme} />
+      ))}
+    </>
+    /* {themes.map((theme) => (
         <section key={theme.name} className="theme-section">
           <div
             className="theme-collapsed"
@@ -51,8 +53,7 @@ function App() {
             </div>
           )}
         </section>
-      ))}
-    </>
+      ))} */
   );
 }
 export default App;
