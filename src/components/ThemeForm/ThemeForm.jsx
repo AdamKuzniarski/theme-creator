@@ -15,7 +15,7 @@ export default function ThemeForm({ onAddTheme }) {
     if (!name.trim()) return;
     //wenn namensFeld leer ist die funktion bricht ab
     onAddTheme({
-      id: crypto.randomUUID(),
+      id: crypto.randomUUID(), 
       name,
       colors: [
         { role: "Primary", value: primary },
@@ -25,11 +25,12 @@ export default function ThemeForm({ onAddTheme }) {
       ],
     });
     //onAddTheme - ruft übergeben als Prop funktion, die kommt aus App.jsx
-    setName("");
+     setName("");
     setPrimary("#a350d8");
     setSecondary("#e7a6f5");
     setSurface("#ececf1");
-    setSurfaceOn("#ffffff");
+    setSurfaceOn("#ffffff"); 
+    // alle Formular zurücksetzen - alle Angaben re-installieren
   }
   return (
     //hier wird die funktion weitergegeben
@@ -83,7 +84,7 @@ export default function ThemeForm({ onAddTheme }) {
           />
           <input
             type="text"
-            value={secondary}
+            value={surface}
             onChange={(event) => setSurface(event.target.value)}
             maxLength={7}
             pattern="#[0-9A-Fa-f]{6}"
@@ -102,7 +103,7 @@ export default function ThemeForm({ onAddTheme }) {
           />
           <input
             type="text"
-            value={secondary}
+            value={surfaceOn}
             onChange={(event) => setSurfaceOn(event.target.value)}
             maxLength={7}
             pattern="#[0-9A-Fa-f]{6}"

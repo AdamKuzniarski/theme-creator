@@ -6,8 +6,9 @@ import ThemeForm from "./components/ThemeForm/ThemeForm.jsx";
 import { useState } from "react";
 
 const initialThemes = themes;
-
+// die Werte von 'DatenBank' -datei db.js holen
 function App() {
+
   const [themes, setThemes] = useState(initialThemes);
 
   function handleAddTheme(newTheme) {
@@ -18,10 +19,10 @@ function App() {
   return (
     <>
       <Header />
-      {/* die function wird hier von ThemeForm übergeben und ausgelöst  */}
+      {/* die Function wird hier von ThemeForm als Prop -onAddTheme übergeben und wird mit Objekt zurückggeben  */}
       <ThemeForm onAddTheme={handleAddTheme} />
       {themes.map((theme) => (
-        <Theme key={theme.name} theme={theme} />
+        <Theme key={theme.id} theme={theme} />
       ))}
     </>
   );
