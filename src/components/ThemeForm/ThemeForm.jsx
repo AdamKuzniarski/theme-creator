@@ -12,10 +12,10 @@ export default function ThemeForm({ onAddTheme }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    //verhindert leeren Namen hinzufügen
     if (!name.trim()) return;
-
+    //wenn namensFeld leer ist die funktion bricht ab
     onAddTheme({
+      id: crypto.randomUUID(),
       name,
       colors: [
         { role: "Primary", value: primary },
@@ -24,6 +24,7 @@ export default function ThemeForm({ onAddTheme }) {
         { role: "Surface-on", value: surfaceOn },
       ],
     });
+    //onAddTheme - ruft übergeben als Prop funktion, die kommt aus App.jsx
     setName("");
     setPrimary("#a350d8");
     setSecondary("#e7a6f5");
@@ -32,6 +33,7 @@ export default function ThemeForm({ onAddTheme }) {
   }
   return (
     //hier wird die funktion weitergegeben
+    //für jede Farbe Funktion rendert ein input mit text und colorPicker
     <form className="theme-form" onSubmit={handleSubmit}>
       <div className="theme-form-row">
         <label>
