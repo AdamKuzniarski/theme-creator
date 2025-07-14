@@ -37,3 +37,7 @@
 .theme-detail {
   margin-top: 10px;
 }
+
+.theme-delete-button {
+  font-family: inherit;
+}
