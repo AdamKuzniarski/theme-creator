@@ -3,13 +3,13 @@ import themes from "./db.js";
 import Header from "./Header/Header.jsx";
 import Theme from "./components/Theme/Theme.jsx";
 import ThemeForm from "./components/ThemeForm/ThemeForm.jsx";
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 const initialThemes = themes;
 // die Werte von 'DatenBank' -datei db.js holen
 function App() {
 
-  const [themes, setThemes] = useState(initialThemes);
+  const [themes, setThemes] = useLocalStorageState('themes',{defaultValue: initialThemes});
 
   function handleAddTheme(newTheme) {
     setThemes([newTheme, ...themes]);
