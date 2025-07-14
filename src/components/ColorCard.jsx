@@ -3,7 +3,6 @@ import "./ColorCard.css";
 
 export default function ColorCard({ role, hex }) {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchColorData() {
@@ -18,7 +17,7 @@ export default function ColorCard({ role, hex }) {
         const colorData = await response.json(); // JSON-Parsing Response von API wird in JavaScript Object umgewandelt
         setData(colorData); //Api Daten sind im Data-Stae gespeichert
       } catch (error) {
-        console.error("Fehler bei Laden von FarbDaten", error); //falls ein Fehler kommt, wird in der Konsole ausgeeben
+        console.error("Fehler bei Laden von FarbDaten", error); //falls      } finally {
       } finally {
         setLoading(false); // clean-up Loading-State zurücksetzen egal ob Request erflogt oder nicht
       }
