@@ -3,7 +3,7 @@ import "./Theme.css";
 import ColorCard from "../ColorCard";
 import { useState } from "react";
 
-export default function Theme({ theme }) {
+export default function Theme({ theme, onDelete }) {
   //lokaler State für zusammenklappen!
   const [open, setOpen] = useState(true);
 
@@ -39,6 +39,12 @@ export default function Theme({ theme }) {
           {theme.colors.map((color) => (
             <ColorCard key={color.role} role={color.role} hex={color.value} />
           ))}
+          <button
+            className="theme-delete-button"
+            onClick={() => onDelete(theme.id)}
+          >
+            Delete Theme
+          </button>
         </div>
       )}
     </section>
