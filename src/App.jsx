@@ -1,59 +1,30 @@
 import "./App.css";
-import ColorCard from "./components/ColorCard.jsx";
+import themes from "./db.js";
 import Header from "./Header/Header.jsx";
 import Theme from "./components/Theme/Theme.jsx";
-import themes from "./db.js";
+import ThemeForm from "./components/ThemeForm/ThemeForm.jsx";
+import { useState } from "react";
 
-
+const initialThemes = themes;
+// die Werte von 'DatenBank' -datei db.js holen
 function App() {
- 
 
-  /*  function handleToggle(themeName) {
-    setOpenTheme(openTheme === themeName ? null : themeName);
-  } */
+  const [themes, setThemes] = useState(initialThemes);
+
+  function handleAddTheme(newTheme) {
+    setThemes([newTheme, ...themes]);
+    console.log(newTheme);
+  }
+
   return (
     <>
       <Header />
+      {/* die Function wird hier von ThemeForm als Prop -onAddTheme übergeben und wird mit Objekt zurückggeben  */}
+      <ThemeForm onAddTheme={handleAddTheme} />
       {themes.map((theme) => (
-        <Theme key={theme.name} theme={theme} />
+        <Theme key={theme.id} theme={theme} />
       ))}
     </>
-    /* {themes.map((theme) => (
-        <section key={theme.name} className="theme-section">
-          <div
-            className="theme-collapsed"
-            onClick={() => handleToggle(theme.name)}
-            style={{ cursor: "pointer" }}
-          >
-            <h3>{theme.name}</h3>
-            <div className="theme-swatches">
-              {theme.colors.map((color) => (
-                <div
-                  key={color.role}
-                  className="theme-swatch"
-                  style={{ backgroundColor: color.value }}
-                  title={color.role}
-                />
-              ))}
-            </div>
-            <span className="theme-arrow">
-              {openTheme === theme.name ? "▼" : "▲"}
-            </span>
-          </div>
-
-          {openTheme === theme.name && (
-            <div className="theme-detail">
-              {theme.colors.map((color) => (
-                <ColorCard
-                  key={color.role}
-                  role={color.role}
-                  hex={color.value}
-                />
-              ))}
-            </div>
-          )}
-        </section>
-      ))} */
   );
 }
 export default App;
