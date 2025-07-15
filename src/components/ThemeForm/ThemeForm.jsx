@@ -14,6 +14,7 @@ export default function ThemeForm({ onAddTheme }) {
     event.preventDefault();
     if (!name.trim()) return;
     //wenn namensFeld leer ist die funktion bricht ab
+    console.log({ primary });
     onAddTheme({
       id: crypto.randomUUID(),
       name,
@@ -31,7 +32,6 @@ export default function ThemeForm({ onAddTheme }) {
     setSurface("#ececf1");
     setSurfaceOn("#ffffff");
     // alle Formular zurücksetzen - alle Angaben reseten und auf 'default-Beispiel Werte setzen'
-    console.log(event.target);
   }
   return (
     //hier wird die funktion weitergegeben
@@ -127,6 +127,7 @@ export default function ThemeForm({ onAddTheme }) {
       <button type="submit" className="theme-form-add">
         Add Theme
       </button>
+      
     </form>
   );
 }
