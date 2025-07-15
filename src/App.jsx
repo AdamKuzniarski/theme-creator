@@ -11,15 +11,22 @@ function App() {
 
   const [themes, setThemes] = useLocalStorageState('themes',{defaultValue: initialThemes});
 
+
+
   function handleAddTheme(newTheme) {
     setThemes([newTheme, ...themes]);
    //console.log(newTheme);
   }
 
+
+
+
   function handleDeleteTheme(idToDelete){
     setThemes(themes => themes.filter(theme => theme.id !== idToDelete))
   }
 
+
+  
   return (
     <>
       <Header />

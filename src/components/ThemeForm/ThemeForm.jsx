@@ -15,6 +15,9 @@ export default function ThemeForm({ onAddTheme }) {
     if (!name.trim()) return;
     //wenn namensFeld leer ist die funktion bricht ab
     console.log({ primary });
+
+
+    
     onAddTheme({
       id: crypto.randomUUID(),
       name,
