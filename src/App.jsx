@@ -13,7 +13,7 @@ function App() {
 
   function handleAddTheme(newTheme) {
     setThemes([newTheme, ...themes]);
-    console.log(newTheme);
+   //console.log(newTheme);
   }
 
   function handleDeleteTheme(idToDelete){

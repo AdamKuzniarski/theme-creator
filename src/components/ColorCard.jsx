@@ -18,8 +18,6 @@ export default function ColorCard({ role, hex }) {
         setData(colorData); //Api Daten sind im Data-Stae gespeichert
       } catch (error) {
         console.error("Fehler bei Laden von FarbDaten", error); //falls      } finally {
-      } finally {
-        setLoading(false); // clean-up Loading-State zurücksetzen egal ob Request erflogt oder nicht
       }
     }
     fetchColorData();
