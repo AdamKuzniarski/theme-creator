@@ -12,20 +12,19 @@ export default function ThemeForm({ onAddTheme }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const data = Object.fromEntries(new FormData(event.target));
     if (!name.trim()) return;
     //wenn namensFeld leer ist die funktion bricht ab
     console.log({ primary });
 
-
-    
     onAddTheme({
       id: crypto.randomUUID(),
       name,
       colors: [
-        { role: "Primary", value: primary },
-        { role: "Secondary", value: secondary },
-        { role: "Surface", value: surface },
-        { role: "Surface-on", value: surfaceOn },
+        { role: "Primary", value: data.primary },
+        { role: "Secondary", value: data.secondary },
+        { role: "Surface", value: data.surface },
+        { role: "Surface-on", value: data.surfaceOn },
       ],
     });
     //onAddTheme - ruft übergeben als Prop funktion, die kommt aus App.jsx
@@ -43,16 +42,11 @@ export default function ThemeForm({ onAddTheme }) {
       <div className="theme-form-row">
         <label>
           Primary:
-          <input
-            type="color"
-            value={primary}
-            onChange={(event) => setPrimary(event.target.value)}
-            required
-          />
+          <input type="color" name="primary" value={primary} required />
           <input
             type="text"
+            name="primary"
             value={primary}
-            onChange={(event) => setPrimary(event.target.value)}
             maxLength={7}
             pattern="#[0-9A-Fa-f]{6}"
           />
@@ -62,12 +56,14 @@ export default function ThemeForm({ onAddTheme }) {
         <label>
           Secondary:
           <input
+            name="secondary"
             type="color"
             value={secondary}
             onChange={(event) => setSecondary(event.target.value)}
             required
           />
           <input
+            name="secondary"
             type="text"
             value={secondary}
             onChange={(event) => setSecondary(event.target.value)}
@@ -81,12 +77,14 @@ export default function ThemeForm({ onAddTheme }) {
         <label>
           Surface:
           <input
+            name="surface"
             type="color"
             value={surface}
             onChange={(event) => setSurface(event.target.value)}
             required
           />
           <input
+            name="surface"
             type="text"
             value={surface}
             onChange={(event) => setSurface(event.target.value)}
@@ -101,11 +99,13 @@ export default function ThemeForm({ onAddTheme }) {
           Surface-on:
           <input
             type="color"
+            name="surfaceOn"
             value={surfaceOn}
             onChange={(event) => setSurfaceOn(event.target.value)}
             required
           />
           <input
+            name="surfaceOn"
             type="text"
             value={surfaceOn}
             onChange={(event) => setSurfaceOn(event.target.value)}
@@ -130,7 +130,6 @@ export default function ThemeForm({ onAddTheme }) {
       <button type="submit" className="theme-form-add">
         Add Theme
       </button>
-      
     </form>
   );
 }
