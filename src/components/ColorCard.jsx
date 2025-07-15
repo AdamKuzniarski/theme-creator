@@ -13,11 +13,11 @@ export default function ColorCard({ role, hex }) {
         const response = await fetch(
           `https://www.thecolorapi.com/id?hex=${cleanHexValue}`
         );
-        console.log(response);
+        
         const colorData = await response.json(); // JSON-Parsing Response von API wird in JavaScript Object umgewandelt
         setData(colorData); //Api Daten sind im Data-Stae gespeichert
       } catch (error) {
-        console.error("Fehler bei Laden von FarbDaten", error); //falls      } finally {
+        console.error("Fehler bei Laden von FarbDaten", error); 
       }
     }
     fetchColorData();

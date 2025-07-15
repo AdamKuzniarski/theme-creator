@@ -31,7 +31,7 @@ export default function ThemeForm({ onAddTheme }) {
     setSurface("#ececf1");
     setSurfaceOn("#ffffff");
     // alle Formular zurücksetzen - alle Angaben reseten und auf 'default-Beispiel Werte setzen'
-    console.log(event.target);
+    
   }
   return (
     //hier wird die funktion weitergegeben
