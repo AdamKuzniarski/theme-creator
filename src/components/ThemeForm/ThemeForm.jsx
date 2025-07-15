@@ -15,7 +15,6 @@ export default function ThemeForm({ onAddTheme }) {
     const data = Object.fromEntries(new FormData(event.target));
     if (!name.trim()) return;
     //wenn namensFeld leer ist die funktion bricht ab
-    console.log({ primary });
 
     onAddTheme({
       id: crypto.randomUUID(),
