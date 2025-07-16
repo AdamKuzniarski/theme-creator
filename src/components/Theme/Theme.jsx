@@ -9,13 +9,17 @@ export default function Theme({ theme, onDelete, onUpdate }) {
   const [edit, setEdit] = useState(false);
   const [editTheme, setEditTheme] = useState(false);
 
+  // wemm soch prop 'theme' ändert wird synchronisiert
+  useEffect(() => {
+    setEditTheme(theme);
+  }, [theme]);
   //funktion die dreht die State open und !open => wenn open dreh den State um
   function handleToogle() {
     setOpen((open) => !open);
   }
 
-  function handleEdit(){
-    setEdit(true)
+  function handleEdit() {
+    setEdit(true);
   }
 
   function handleSave() {
@@ -23,14 +27,10 @@ export default function Theme({ theme, onDelete, onUpdate }) {
     setEdit(false);
   }
 
-  function handleChangeName(event){
-const name = event.target.value
-setEditTheme(editTheme =>({...editTheme, name}))
+  function handleChangeName(event) {
+    const name = event.target.value;
+    setEditTheme((editTheme) => ({ ...editTheme, name }));
   }
-  // wemm soch prop 'theme' ändert wird synchronisiert
-  useEffect(() => {
-    setEditTheme(theme);
-  }, [theme]);
 
   function handleColorChange(index, newValue) {
     // array kopieren
@@ -40,7 +40,6 @@ setEditTheme(editTheme =>({...editTheme, name}))
     //State updaten + render
     setEditTheme((editTheme) => ({ ...editTheme, colors: newColors }));
   }
-
 
   return (
     <section className="theme-section">
@@ -68,50 +67,62 @@ setEditTheme(editTheme =>({...editTheme, name}))
         <div className="theme-detail">
           {!edit ? (
             <>
-          
-          {theme.colors.map((color) => (
-            <ColorCard key={color.role} role={color.role} hex={color.value} />
-          ))}
-          <button type="button" onClick={handleEdit}>
-            Edit
-          </button>
-          <button
-            className="theme-delete-button"
-            onClick={() => onDelete(theme.id)}
-          >
-            Delete Theme
-          </button>
-         
-          </>
+              {theme.colors.map((color) => (
+                <ColorCard
+                  key={color.role}
+                  role={color.role}
+                  hex={color.value}
+                />
+              ))}
+              <button type="button" onClick={handleEdit}>
+                Edit
+              </button>
+              <button
+                className="theme-delete-button"
+                onClick={() => onDelete(theme.id)}
+              >
+                Delete Theme
+              </button>
+            </>
           ) : (
             <>
-            <label>
-              Name:
-              <input type="text"
-                value={editTheme.name}
-                onChange={handleChangeName}
-              />
-            </label>
-            {editTheme.colors.map((color, index)=>(
-              <div key={color.role} className="edit-row">
-                {color.role}
+              <label>
+                Name:
                 <input
-                 type="color" value={color.value} 
-                 onChange={(event)=>handleColorChange(index, event.target.value)}
-                 />
-                 <input type="text"
-                 value={color.value}
-                 onChange={(event)=>handleColorChange(index, event.target.value)}
-                 />
-                
-              </div>
-            ))}
-              <button type="button" onClick={handleSave}>Save Theme</button>
-              <button type="button" onClick={()=> setEdit(false)}>Cancel</button>
-              </>
-        )}
+                  type="text"
+                  value={editTheme.name}
+                  onChange={handleChangeName}
+                />
+              </label>
+              {editTheme.colors.map((color, index) => (
+                <div key={color.role} className="edit-row">
+                  {color.role}
+                  <input
+                    type="color"
+                    value={color.value}
+                    onChange={(event) =>
+                      handleColorChange(index, event.target.value)
+                    }
+                  />
+                  <input
+                    type="text"
+                    value={color.value}
+                    onChange={(event) =>
+                      handleColorChange(index, event.target.value)
+                    }
+                  />
+                </div>
+              ))}
+              <button type="button" onClick={handleSave}>
+                Save Theme
+              </button>
+              <button type="button" onClick={() => setEdit(false)}>
+                Cancel
+              </button>
+            </>
+          )}
         </div>
-     ) }
+      )}
     </section>
   );
 }
