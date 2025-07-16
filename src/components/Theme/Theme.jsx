@@ -17,11 +17,11 @@ export default function Theme({ theme, onDelete, onUpdate }) {
   function handleToogle() {
     setOpen((open) => !open);
   }
-
+//edit modus wechseln
   function handleEdit() {
     setEdit(true);
   }
-
+// speichet Änderungen und verlässt EditModus
   function handleSave() {
     onUpdate(editTheme);
     setEdit(false);
@@ -31,6 +31,8 @@ export default function Theme({ theme, onDelete, onUpdate }) {
     const name = event.target.value;
     setEditTheme((editTheme) => ({ ...editTheme, name }));
   }
+
+// index track welche Farbe im Array betroffen wird
 
   function handleColorChange(index, newValue) {
     // array kopieren
