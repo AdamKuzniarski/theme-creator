@@ -13,11 +13,11 @@ export default function ColorCard({ role, hex }) {
         const response = await fetch(
           `https://www.thecolorapi.com/id?hex=${cleanHexValue}`
         );
-        
+
         const colorData = await response.json(); // JSON-Parsing Response von API wird in JavaScript Object umgewandelt
         setData(colorData); //Api Daten sind im Data-Stae gespeichert
       } catch (error) {
-        console.error("Fehler bei Laden von FarbDaten", error); 
+        console.error("Fehler bei Laden von FarbDaten", error);
       }
     }
     fetchColorData();
@@ -30,10 +30,7 @@ export default function ColorCard({ role, hex }) {
           <div className="color-card__hex">{hex}</div>
           {data && <div className="color-card-name">{data.name.value}</div>}
         </div>
-        <div
-          className="color-card__swatch"
-          style={{ backgroundColor: hex }}
-        ></div>
+        <div className="color-card__swatch" style={{ background: hex }}></div>
       </div>
     </>
   );
