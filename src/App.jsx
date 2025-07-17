@@ -11,27 +11,20 @@ function App() {
 
   const [themes, setThemes] = useLocalStorageState('themes',{defaultValue: initialThemes});
 
-
-
   function handleAddTheme(newTheme) {
     setThemes([newTheme, ...themes]);
    //console.log(newTheme);
   }
 
-
-
-
   function handleDeleteTheme(idToDelete){
     setThemes(themes => themes.filter(theme => theme.id !== idToDelete))
   }
 
-//
   function handleUpdateTheme(updatedTheme){
     setThemes(themes.map(theme => theme.id === updatedTheme.id ? updatedTheme : theme))
   }
 
-  
-  return (
+    return (
     <>
       <Header />
       {/* die Function wird hier von ThemeForm als Prop -onAddTheme übergeben und wird mit Objekt zurückggeben  */}

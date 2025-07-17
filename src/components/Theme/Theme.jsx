@@ -23,7 +23,6 @@ export default function Theme({ theme, onDelete, onUpdate }) {
         : DISPLAY_STATES.preview
     );
   }
-  //edit modus wechseln
   function handleEdit() {
     setDisplay(DISPLAY_STATES.edit);
   }
@@ -32,8 +31,6 @@ export default function Theme({ theme, onDelete, onUpdate }) {
     onUpdate(updatedTheme);
     setDisplay(DISPLAY_STATES.detail);
   }
-
-  // index track welche Farbe im Array betroffen wird
 
   return (
     <section className="theme-section">
