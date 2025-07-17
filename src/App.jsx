@@ -25,6 +25,10 @@ function App() {
     setThemes(themes => themes.filter(theme => theme.id !== idToDelete))
   }
 
+//
+  function handleUpdateTheme(updatedTheme){
+    setThemes(themes.map(theme => theme.id === updatedTheme.id ? updatedTheme : theme))
+  }
 
   
   return (
@@ -33,7 +37,7 @@ function App() {
       {/* die Function wird hier von ThemeForm als Prop -onAddTheme übergeben und wird mit Objekt zurückggeben  */}
       <ThemeForm onAddTheme={handleAddTheme} />
       {themes.map((theme) => (
-        <Theme key={theme.id} theme={theme} onDelete={handleDeleteTheme} /> // delete Prop wird weitergeben 
+        <Theme key={theme.id} theme={theme} onDelete={handleDeleteTheme} onUpdate={handleUpdateTheme} /> // delete Prop wird weitergeben 
       ))}
     </>
   );

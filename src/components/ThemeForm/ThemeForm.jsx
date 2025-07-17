@@ -43,11 +43,13 @@ export default function ThemeForm({ onAddTheme }) {
           Primary:
           <input type="color" name="primary" value={primary} required />
           <input
-            type="text"
             name="primary"
+            type="text"
             value={primary}
+            onChange={(event) => setPrimary(event.target.value)}
             maxLength={7}
             pattern="#[0-9A-Fa-f]{6}"
+            required
           />
         </label>
       </div>

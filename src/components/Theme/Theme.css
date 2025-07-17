@@ -41,3 +41,6 @@
 .theme-delete-button {
   font-family: inherit;
 }
+button {
+  margin-right: 10px;
+}
