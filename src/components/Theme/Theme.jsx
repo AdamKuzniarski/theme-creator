@@ -12,13 +12,10 @@ const DISPLAY_STATES = {
 //ENUM
 
 export default function Theme({ theme, onDelete, onUpdate }) {
-  //lokaler State für zusammenklappen!
+ 
 
   const [display, setDisplay] = useState(DISPLAY_STATES.preview);
 
-  // wemm soch prop 'theme' ändert wird synchronisiert
-
-  //funktion die dreht die State open und !open => wenn open dreh den State um
   function handleToogle() {
     setDisplay(
       display === DISPLAY_STATES.preview

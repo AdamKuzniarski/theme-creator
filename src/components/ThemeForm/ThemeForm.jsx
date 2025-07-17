@@ -41,7 +41,13 @@ export default function ThemeForm({ onAddTheme }) {
       <div className="theme-form-row">
         <label>
           Primary:
-          <input type="color" name="primary" value={primary} required />
+          <input
+            name="primary"
+            type="color"
+            value={primary}
+            onChange={(event) => setPrimary(event.target.value)}
+            required
+          />
           <input
             name="primary"
             type="text"
