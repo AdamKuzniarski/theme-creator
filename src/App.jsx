@@ -17,7 +17,7 @@ function App() {
   }
 
   function handleDeleteTheme(idToDelete){
-    setThemes(themes => themes.filter(theme => theme.id !== idToDelete))
+    setThemes(themes.filter(theme => theme.id !== idToDelete))
   }
 
   function handleUpdateTheme(updatedTheme){

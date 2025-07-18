@@ -12,8 +12,6 @@ const DISPLAY_STATES = {
 //ENUM
 
 export default function Theme({ theme, onDelete, onUpdate }) {
- 
-
   const [display, setDisplay] = useState(DISPLAY_STATES.preview);
 
   function handleToogle() {
@@ -51,7 +49,9 @@ export default function Theme({ theme, onDelete, onUpdate }) {
             />
           ))}
         </div>
-        <span className="theme-arrow">{open ? "▼" : "▲"}</span>
+        <span className="theme-arrow">
+          {display === DISPLAY_STATES.preview ? "▼" : "▲"}
+        </span>
       </div>
 
       {display === DISPLAY_STATES.detail && (
